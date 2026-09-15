@@ -1,0 +1,23 @@
+{
+ "browser" :"firefox",
+ "url" : "http://127.0.0.1/orangehrm-2.5.0.2/login.php",
+ "username" : "mvvsrikanth",
+ "password" :"mvvsrikanth@123",
+ "firstname" : "mvv",
+ "lastname" : "Srikanth",
+ "MiddleName" : "venu",
+ "Marital" :"Married",
+ "SearchBy" :"Emp. First Name",
+ "SearchFor" : "mvv",
+ "welcomeText" : "Welcome mvvsrikanth",
+ "addEMPTitle" : "PIM : Add Employee",
+ "EmpName" : "mvv Srikanth",
+ "Country" :"India",
+ "Stree1" : "India",
+ "Stree2" : "India",
+ "mobile" : "8888888888",
+ "JobTitle":"QA",
+ "EMPStatus" :"Terminated",
+ "DeleteMessage" : "Successfully Deleted"
+  
+}
