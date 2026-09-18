@@ -63,7 +63,7 @@ export class CommonUtils{
 }
 
 
-    public static async enterValue(selector :string,value :string):Promise<void>
+    public static async enterValue(selector:string,value:string):Promise<void>
 
    {
      try 
@@ -135,6 +135,7 @@ export class CommonUtils{
       try 
       {
         pimFrame = this.page.frameLocator(selector);
+        
       }
       catch(error:any)
       {
@@ -158,6 +159,27 @@ export class CommonUtils{
       }
 
   }
+
+  static async getElementTextInFrame(pimFrame: FrameLocator,selector:string):Promise<string>
+{
+   let text: string="";
+    try
+    {
+          let pageText: string | null =  await pimFrame.locator(selector).textContent();//PIM : Add Employee
+    
+          if(pageText!=null)
+          {
+              text = pageText; //PIM : Add Employee
+          }
+
+        }catch(error: any)
+    {
+      AssertUtil.assertFalse(error.message);
+    }
+
+
+    return text;//PIM : Add Employee
+}
     public static async clickElementInFrame(pimFrame : FrameLocator,selector :string):Promise<void>
     {
       try
@@ -177,7 +199,7 @@ export class CommonUtils{
     try
     {
        let element :Locator= await pimFrame.locator(selector);
-     
+            
        chkElement = await element.isChecked();
        
     }

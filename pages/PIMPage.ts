@@ -15,7 +15,8 @@ export class PIMPage {
   private by_searchButton = "//input[@value='Search']"
   private by_employeeName = "//a[contains(normalize-space(), 'mvv') and contains(normalize-space(), 'Srikanth')]";
   private by_Address ="xpath=//a[@id='contactsLink']";
-  private by_EditContact ="xpath=//input[@id ='btnEditContact']";
+  private by_EditContact ="xpath=//input[@id='btnEditContact']";           
+   private by_SaveContact ="xpath=//input[@id='btnEditContact']";
   private by_searchByCountry ="xpath=//select[@name='cmbCountry']";
   private by_street1 ="xpath=//input[@name='txtStreet1']";
   private by_street2 ="xpath=//input[@name='txtStreet2']";
@@ -91,6 +92,10 @@ export class PIMPage {
   getEditContact():string
   {
     return this.by_EditContact;
+  }
+  getSaveContact():string
+  {
+    return this.by_SaveContact;
   }
   getSearchByCountry():string
   {

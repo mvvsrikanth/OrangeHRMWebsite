@@ -106,25 +106,74 @@ When(
 
 
 // Click Save Button
-When(
-    "click the Save button to add the new employee",
-    async  () => {
+   When("click the Save button to add the new employee",async  () => {
+    await CommonUtils.clickElementInFrame(pimFrame,pimPage.getSave());
+       } );
 
-        await CommonUtils.clickElementInFrame(
-            pimFrame,
-            pimPage.getSave()
-        );
+    When("search by Name {string}",async(SearchBy:string)=>{
+    await CommonUtils.SearchBy_Frame(pimFrame,pimPage.getSearchByDropdown(),SearchBy);
+    }) ;
+    When("search for employee {string}",async(SearchFor:string)=>{
 
-    }
-);
+         await CommonUtils.SearchFor_Frame(pimFrame,pimPage.getSearchFor(),SearchFor)
+    });
+    When("click on Search Button",async()=>{
+        await CommonUtils.Search_Frame(pimFrame,pimPage.getSearchButton());
+    });
+    When("click on Added Employee",async()=>{
+        await CommonUtils. VisibleClick_Frame(pimFrame,pimPage.getEmployeeName());
+    });
+    When("click on Contact Details",async()=>{
+        await CommonUtils.VisibleClick_Frame(pimFrame,pimPage.getAddressDetails());
+    });
+    When("click on Edit Contact",async()=>{
+        await CommonUtils.clickElementInFrame(pimFrame,pimPage.getEditContact());
+    });
+    When("select the country from Dropdown {string}",async(Country:string)=>{
+      await CommonUtils.SearchBy_Frame(pimFrame,pimPage.getSearchByCountry(),Country);
+    });
+    When("enter Street 1 {string}",async(Stree1:string)=>{
+         await CommonUtils.frameEnterValue(pimFrame,pimPage.getStreet1(),Stree1);
+    });
+    When("enter Street 2 {string}",async(Stree2:string)=>{
+         await CommonUtils.frameEnterValue(pimFrame,pimPage.getStreet1(),Stree2);
+    });
+    When("enter Mobile number {string}",async(mobile:string)=>{
+    await CommonUtils.frameEnterValue(pimFrame,pimPage.getMobile(),mobile);
+    });
+    When("click on Save Contact",async()=>{
+        await CommonUtils.clickElementInFrame(pimFrame,pimPage.getSaveContact());
+    });
+    
+    //Verify the Delete Employee
+    When ("click on select all checkbox",async()=>{
+      // Click on Check All
+    await CommonUtils.clickElementInFrame(pimFrame,pimPage.getCheckAll());
+       
+    });
+    When("click on Delete",async()=>{
+     // Click on Delete 
+         await CommonUtils.clickElementInFrame(pimFrame,pimPage.getEmpDelete());
+
+    });
+    
+    Then("Verify successfull message {}",async(DeleteMessage:string)=>{
+
+        await AssertUtil.assertEquals(await CommonUtils.getElementFrameText(pimFrame,pimPage.getDeleteMessage()),DeleteMessage);
+    });
 
 
+
+   
+/*
 // Click Edit Button
 When("click the Edit button", async  () => {
 
     await CommonUtils.clickElementInFrame(
         pimFrame,
         pimPage.getEdit()
+        
+        
     );
 
 });
@@ -201,7 +250,7 @@ When("click the search button", async  () =>{
 });
 
 
-/*// Verify Employee Name
+// Verify Employee Name
 Then(
     "verify that the employee name displayed matches {string}",
     async  (expectedEmployeeName: string) =>{
@@ -221,4 +270,4 @@ console.log("expectedEmployeeName : "+expectedEmployeeName);
         );
 
     }
-);*/
+); */
