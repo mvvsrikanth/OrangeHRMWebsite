@@ -1,0 +1,4 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","18183","Verify Add Employee functionality","","2026-09-22","passed","2026-09-22","","","",""
+"","36079","Verify Delete Employee","","2026-09-22","broken","2026-09-22","","","",""
+"","36376","Verify Edit Employee","","2026-09-22","broken","2026-09-22","","","",""
