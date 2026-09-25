@@ -107,7 +107,7 @@ When(
     }
 );
 
-
+setDefaultTimeout(30000);
 // Click Save Button
    When("click the Save button to add the new employee",async  () => {
     await CommonUtils.clickElementInFrame(frame,pimPage.getSave());
