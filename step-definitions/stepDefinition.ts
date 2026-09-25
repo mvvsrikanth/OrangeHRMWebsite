@@ -86,12 +86,13 @@ When(
             frame,
             pimPage.getFirstName(),
             firstname
+            
         );
 
     }
     
 );
-
+setDefaultTimeout(30000);
 
 // Enter Last Name
 When(
@@ -106,7 +107,6 @@ When(
 
     }
 );
-
 setDefaultTimeout(30000);
 // Click Save Button
    When("click the Save button to add the new employee",async  () => {
@@ -160,7 +160,7 @@ setDefaultTimeout(30000);
 
     });
     
-    Then("Verify successfull message {}",async(DeleteMessage:string)=>{
+    Then("Verify successfull message {string}",async(DeleteMessage:string)=>{
 
         await AssertUtil.assertEquals(await CommonUtils.getElementFrameText(frame,pimPage.getDeleteMessage()),DeleteMessage);
     });
@@ -286,6 +286,8 @@ console.log("expectedEmployeeName : "+expectedEmployeeName);
  When("click on General",async() =>{
     await CommonUtils.clickElement(adminPage.getGeneral());
  });
- Then("verify company info",async()=>{
-     const CompanyTitle = await CommonUtils.getElementText(adminPage.getCmpVerify());
- });
+ 
+ Then("verify company info {string}", async (CompanyTitle: string) => {
+    await AssertUtil.assertEquals(await CommonUtils.getElementFrameText(frame,adminPage.getCmpVerify()),CompanyTitle);
+});
+ 

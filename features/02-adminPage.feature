@@ -6,4 +6,5 @@ Scenario:Verify add Company General Information
  When mouse hover on Admin
  When mouse hover on Company Information
  When click on General
- Then verify company info 
+ And switch to the iframe
+ Then verify company info "Company Info : General" 
