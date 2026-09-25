@@ -11,13 +11,16 @@ import { PIMPage } from "../pages/PIMPage";
 import { CommonUtils } from "../util/CommonUtils";
 import { AssertUtil } from "../util/AssertUtil";
 import {setDefaultTimeout} from "@cucumber/cucumber";
+import { AsyncLocalStorage } from "async_hooks";
+import { AdminPage } from "../pages/AdminPage";
 
 setDefaultTimeout(30000);
 
 const loginPage = new LoginPage();
 const pimPage = new PIMPage();
+const adminPage = new AdminPage();
 
-let pimFrame: FrameLocator;
+let frame: FrameLocator;
 
 
 // Login Step
@@ -52,7 +55,7 @@ When("move the mouse to the PIM", async  () => {
 
 });
 
-
+ 
 // Click Add Employee
 When("click on the Add Employee button", async  () => {
 
@@ -66,7 +69,7 @@ When("click on the Add Employee button", async  () => {
 // Switch to iframe
 When("switch to the iframe", async  () => {
 
-    pimFrame =
+    frame =
         await CommonUtils.switchToFrame(
             pimPage.getFrame()
         );
@@ -80,7 +83,7 @@ When(
     async (firstname: string)=> {
 
         await CommonUtils.frameEnterValue(
-            pimFrame,
+            frame,
             pimPage.getFirstName(),
             firstname
         );
@@ -96,7 +99,7 @@ When(
     async  (lastname: string)=> {
 
         await CommonUtils.frameEnterValue(
-            pimFrame,
+            frame,
             pimPage.getLastName(),
             lastname
         );
@@ -107,59 +110,59 @@ When(
 
 // Click Save Button
    When("click the Save button to add the new employee",async  () => {
-    await CommonUtils.clickElementInFrame(pimFrame,pimPage.getSave());
+    await CommonUtils.clickElementInFrame(frame,pimPage.getSave());
        } );
 
     When("search by Name {string}",async(SearchBy:string)=>{
-    await CommonUtils.SearchBy_Frame(pimFrame,pimPage.getSearchByDropdown(),SearchBy);
+    await CommonUtils.SearchBy_Frame(frame,pimPage.getSearchByDropdown(),SearchBy);
     }) ;
     When("search for employee {string}",async(SearchFor:string)=>{
 
-         await CommonUtils.SearchFor_Frame(pimFrame,pimPage.getSearchFor(),SearchFor)
+         await CommonUtils.SearchFor_Frame(frame,pimPage.getSearchFor(),SearchFor)
     });
     When("click on Search Button",async()=>{
-        await CommonUtils.Search_Frame(pimFrame,pimPage.getSearchButton());
+        await CommonUtils.Search_Frame(frame,pimPage.getSearchButton());
     });
     When("click on Added Employee",async()=>{
-        await CommonUtils. VisibleClick_Frame(pimFrame,pimPage.getEmployeeName());
+        await CommonUtils. VisibleClick_Frame(frame,pimPage.getEmployeeName());
     });
     When("click on Contact Details",async()=>{
-        await CommonUtils.VisibleClick_Frame(pimFrame,pimPage.getAddressDetails());
+        await CommonUtils.VisibleClick_Frame(frame,pimPage.getAddressDetails());
     });
     When("click on Edit Contact",async()=>{
-        await CommonUtils.clickElementInFrame(pimFrame,pimPage.getEditContact());
+        await CommonUtils.clickElementInFrame(frame,pimPage.getEditContact());
     });
     When("select the country from Dropdown {string}",async(Country:string)=>{
-      await CommonUtils.SearchBy_Frame(pimFrame,pimPage.getSearchByCountry(),Country);
+      await CommonUtils.SearchBy_Frame(frame,pimPage.getSearchByCountry(),Country);
     });
     When("enter Street 1 {string}",async(Stree1:string)=>{
-         await CommonUtils.frameEnterValue(pimFrame,pimPage.getStreet1(),Stree1);
+         await CommonUtils.frameEnterValue(frame,pimPage.getStreet1(),Stree1);
     });
     When("enter Street 2 {string}",async(Stree2:string)=>{
-         await CommonUtils.frameEnterValue(pimFrame,pimPage.getStreet1(),Stree2);
+         await CommonUtils.frameEnterValue(frame,pimPage.getStreet1(),Stree2);
     });
     When("enter Mobile number {string}",async(mobile:string)=>{
-    await CommonUtils.frameEnterValue(pimFrame,pimPage.getMobile(),mobile);
+    await CommonUtils.frameEnterValue(frame,pimPage.getMobile(),mobile);
     });
     When("click on Save Contact",async()=>{
-        await CommonUtils.clickElementInFrame(pimFrame,pimPage.getSaveContact());
+        await CommonUtils.clickElementInFrame(frame,pimPage.getSaveContact());
     });
     
     //Verify the Delete Employee
     When ("click on select all checkbox",async()=>{
       // Click on Check All
-    await CommonUtils.clickElementInFrame(pimFrame,pimPage.getCheckAll());
+    await CommonUtils.clickElementInFrame(frame,pimPage.getCheckAll());
        
     });
     When("click on Delete",async()=>{
      // Click on Delete 
-         await CommonUtils.clickElementInFrame(pimFrame,pimPage.getEmpDelete());
+         await CommonUtils.clickElementInFrame(frame,pimPage.getEmpDelete());
 
     });
     
     Then("Verify successfull message {}",async(DeleteMessage:string)=>{
 
-        await AssertUtil.assertEquals(await CommonUtils.getElementFrameText(pimFrame,pimPage.getDeleteMessage()),DeleteMessage);
+        await AssertUtil.assertEquals(await CommonUtils.getElementFrameText(frame,pimPage.getDeleteMessage()),DeleteMessage);
     });
 
 
@@ -271,3 +274,18 @@ console.log("expectedEmployeeName : "+expectedEmployeeName);
 
     }
 ); */
+
+// ADMIN PAGE 
+ When ("mouse hover on Admin",async()=>{
+    await CommonUtils.mouseHover(adminPage.getAdminPage());
+
+ });
+ When ("mouse hover on Company Information",async()=>{
+    await CommonUtils.mouseHover(adminPage.getCompanyInfo());
+ });
+ When("click on General",async() =>{
+    await CommonUtils.clickElement(adminPage.getGeneral());
+ });
+ Then("verify company info",async()=>{
+     const CompanyTitle = await CommonUtils.getElementText(adminPage.getCmpVerify());
+ });

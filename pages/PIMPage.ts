@@ -4,7 +4,7 @@ export class PIMPage {
   private by_addEmp = "xpath=//*[@id='pim']/ul/li[2]/a";
   private by_iframe = "iframe[name='rightMenu']";
   private by_pim_addemp = "xpath=//li[text()='PIM : Add Employee']";
-    private by_firstName = "xpath=//input[@id='txtEmpFirstName']";
+  private by_firstName = "xpath=//input[@id='txtEmpFirstName']";
   private by_lastName = "xpath=//input[@id='txtEmpLastName']";
   private by_save = "xpath=//input[@id='btnEdit']";
   private by_edit = "xpath=//input[@id='btnEditPers']";
@@ -16,7 +16,7 @@ export class PIMPage {
   private by_employeeName = "//a[contains(normalize-space(), 'mvv') and contains(normalize-space(), 'Srikanth')]";
   private by_Address ="xpath=//a[@id='contactsLink']";
   private by_EditContact ="xpath=//input[@id='btnEditContact']";           
-   private by_SaveContact ="xpath=//input[@id='btnEditContact']";
+  private by_SaveContact ="xpath=//input[@id='btnEditContact']";
   private by_searchByCountry ="xpath=//select[@name='cmbCountry']";
   private by_street1 ="xpath=//input[@name='txtStreet1']";
   private by_street2 ="xpath=//input[@name='txtStreet2']";

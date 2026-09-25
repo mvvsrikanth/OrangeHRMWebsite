@@ -18,6 +18,7 @@
  "mobile" : "8888888888",
  "JobTitle":"QA",
  "EMPStatus" :"Terminated",
- "DeleteMessage" : "Successfully Deleted"
+ "DeleteMessage" : "Successfully Deleted", 
+ "CompanyTitle" :"Company Info : General"
   
 }

@@ -10,10 +10,10 @@ public static assertEquals(actual:string,expected:string):void
 {
  if(actual===expected)
  {
-    console.log("Expected:" + actual + "is matched with actual :" + expected);
+    console.log("Expected:" + actual + " is matched with actual :" + expected);
  }else
  {
-   console.log("Expected:" + actual + "is not matched with actual :" + expected);
+   console.log("Expected:" + actual + " is not matched with actual :" + expected);
    
  }
 
